@@ -48,10 +48,10 @@
       </dd>
 
       <dt>
-        Received
+        Arrived
       </dt>
       <dd>
-        <%= @the_delivery.received %>
+        <%= @the_delivery.arrived %>
       </dd>
 
       <dt>
@@ -114,10 +114,10 @@
       </div>
 
       <div>
-        <input type="checkbox" id="received_box" name="query_received" value="1" <%= "checked" if @the_delivery.received %>>
+        <input type="checkbox" id="arrived_box" name="arrived" value="1" <%= "checked" if @the_delivery.arrived %>>
 
-        <label for="received_box">
-            Received
+        <label for="arrived_box">
+            Arrived
         </label>
       </div>
 

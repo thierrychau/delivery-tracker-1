@@ -17,6 +17,6 @@ class Delivery < ApplicationRecord
 
   belongs_to(:user)
 
-  scope :received, -> { where(received: true) }
-  scope :waiting_on, -> { where(received: false)}
+  scope :received, -> { where(arrived: true) }
+  scope :waiting_on, -> { where(arrived: false)}
 end

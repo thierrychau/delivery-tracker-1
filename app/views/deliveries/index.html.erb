@@ -71,7 +71,7 @@
 
         <div>
           <form action="/modify_delivery/<%= package.id %>" method="post">
-            <input type="hidden" name="query_received" value=true>
+            <input type="hidden" name="arrived" value=true>
 
             <button>Mark as received</button>
           </form>
@@ -92,13 +92,8 @@
         <div><%= package.description %></div>
 
         <div style="">
-          Updated <%= package.updated_at %> ago
-        </div>
-
-        <div>
-          <form action="/delete_delivery/<%= package.id %>" method="get">
-            <button>Delete</button>
-          </form>
+          Updated <%= time_ago_in_words(package.updated_at) %> ago
+          <a href="/delete_delivery/<%= package.id %>">Delete</a>
         </div>
 
         <br>
