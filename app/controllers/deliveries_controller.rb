@@ -3,8 +3,11 @@ class DeliveriesController < ApplicationController
     matching_deliveries = Delivery.all
 
     @list_of_deliveries = matching_deliveries.order({ :created_at => :desc })
-
-    render({ :template => "deliveries/index" })
+    if current_user != nil
+      render({ :template => "deliveries/index" })
+    else
+      redirect_to("/users/sign_in", {:alert => "You need to sign in or sign up before continuing."})
+    end
   end
 
   def show
@@ -41,7 +44,7 @@ class DeliveriesController < ApplicationController
     the_delivery.supposed_to_arrive_on = params.fetch("query_supposed_to_arrive_on")
     the_delivery.details = params.fetch("query_details")
     the_delivery.user_id = params.fetch("query_user_id")
-    the_delivery.received = params.fetch("query_received", false)
+    the_delivery.received = params.fetch("query_received")
 
     if the_delivery.valid?
       the_delivery.save

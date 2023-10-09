@@ -21,4 +21,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many(:deliveries)
+  has_many :received_deliveries, -> { received }, class_name: 'Delivery'
+  has_many :waiting_on_deliveries, -> { waiting_on }, class_name: 'Delivery'
 end
